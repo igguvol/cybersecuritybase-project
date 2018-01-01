@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Sign up form</title>
-    </head>
-    <body>
+  <style type="text/css">
+    html { height:100%; }
+    body { height: 96%;   }
+    .flex-container {
+      padding: 0;  margin: 0;  list-style: none;  
+      display: -webkit-box;  display: -moz-box;  display: -ms-flexbox;  display: -webkit-flex;  display: flex;  
+      -webkit-flex-flow: row wrap;  justify-content: space-around;  flex-direction: row;
+    }
 
-        <h1>Sign up to the event using this form</h1>
+    .flex-item {
+      background: tomato;  width: 200px;  color: black; margin:0  ;
+    }
+    table {border-collapse: collapse;;border:1px solid black;}
+    tr {border:1px solid black;}
+  </style>
 
-        <form action="#" th:action="@{/form}" method="POST">
-            <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
-            <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
-            <p><input type="submit" value="Submit" /></p>
-        </form>
+  <head>
+    <title>Sign up form</title>
+  </head>
+  <body >
 
-        <p></p>
+
+      <table style=" width:100%;height:100%">
+        <tbody>
+        <tr style="height:10%">
+          <td>
+            <h1 style="background: tomato; text-align:center; font-weight: 40px; color:white">
+              l'Event Magnifico
+            </h1>
+          </td>
+        </tr>
+
+        <tr style="height: 80%; text-align:center">
+          <td>
+            <h1>Sign up to the event using this form</h1>
+
+            <form action="#" th:action="@{/form}" method="POST">
+              <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
+              <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
+              <p><input type="submit" value="Submit" /></p>
+            </form>
+
+            <p></p>
+          </td>
+        </tr>
+
+
+        <tr style="height:10%">
+          <td>
+            <div style="text-align:right">
+              <form action="#" th:action="@{/admin}" method="POST"  class="flex-container"  style="margin:0">
+                <p class="flex-item" style="text-align:left"> Admin login </p>
+                <p class="flex-item"><label for="name">Username</label>: <input type="text" name="username" id="username"/></p>
+                <p class="flex-item"><label for="password">Password</label>: <input type="text" name="password" id="password"/></p>
+                <p class="flex-item"><input type="submit" value="Enter" /></p>
+              </form>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+        
     </body>
 </html>

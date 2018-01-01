@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin</title>
+  <style type="text/css">
+    html { height:100%; }
+    body { height: 96%;   }
+    .flex-container {
+      padding: 0;  margin: 0;  list-style: none;  
+      display: -webkit-box;  display: -moz-box;  display: -ms-flexbox;  display: -webkit-flex;  display: flex;  
+      -webkit-flex-flow: row wrap;  justify-content: space-around;  flex-direction: row;
+    }
+
+    .flex-item {
+      background: tomato;  width: 200px;  color: black; margin:0  ;
+    }
+    table {border-collapse: collapse;;border:1px solid black;}
+    tr {border:1px solid black;}
+  </style>
+    </head>
+    <body>
+        <table style=" width:100%;height:100%">
+            <tbody>
+                <tr style="height:10%">
+                    <td>
+                        <h1 style="background: tomato; text-align:center; font-weight: 40px; color:white">
+                            hello Admin
+                        </h1>
+                    </td>
+                </tr>
+
+                <tr style="height: 50%; text-align:center">
+                    <td>
+                        <ul>
+                            <li th:each="item : ${list}">
+                                <span th:utext="${item.name}+' : '+${item.address}">  </span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr style="height: 30%; text-align:center">
+                    <td>
+                        
+                        <security:authorize ifAnyGranted="ROLE_SUPERVISOR">
+                        <security:authorize access="hasAuthority('ROLE_SUPERVISER')">
+                            <sec:authorize access="hasRole('ROLE_SUPERVISOR')">
+                                <form action="/admin/deleteAll" method="POST" >
+                                    <input type="submit" value="Delete Everything" />
+                                </form>
+                            </sec:authorize>
+                        </security:authorize >
+                        </security:authorize>
+                    </td>
+                </tr>
+            
+
+
+
+        <tr style="height:10%">
+          <td>
+            <div style="text-align:right">
+              <form action="#" th:action="@{/admin}" method="POST"  class="flex-container"  style="margin:0">
+                <p class="flex-item"><input type="submit" value="Logout" /></p>
+              </form>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </body>
+</html>
